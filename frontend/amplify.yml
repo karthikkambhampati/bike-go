@@ -3,6 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
+        - nvm use 20 || nvm install 20 || true
         - npm ci
     build:
       commands:
@@ -21,6 +22,8 @@ frontend:
           value: 'max-age=31536000; includeSubDomains'
         - key: 'X-Frame-Options'
           value: 'SAMEORIGIN'
+        - key: 'X-XSS-Protection'
+          value: '1; mode=block'
         - key: 'X-Content-Type-Options'
           value: 'nosniff'
     - pattern: 'assets/**/*'
