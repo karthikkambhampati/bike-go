@@ -1,0 +1,21 @@
+[Unit]
+Description=Karthik-BikeGo Backend Express Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/bike-go/backend
+ExecStart=/usr/bin/node src/index.js
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+EnvironmentFile=/home/ubuntu/bike-go/backend/.env
+
+# Standard logging
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=bikego-backend
+
+[Install]
+WantedBy=multi-user.target
